@@ -1,2 +1,4 @@
+# Generated media, rejected takes and raw downloads live outside the repo
 source/
 .DS_Store
+*.log

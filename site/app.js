@@ -9,7 +9,7 @@
   const canvas = cine && cine.querySelector(".cine-canvas");
   if (cine && canvas && S.frames && S.frames.total) {
     const ctx = canvas.getContext("2d");
-    const total = S.frames.total;
+    const total = (celular && S.frames.mobileTotal) ? S.frames.mobileTotal : S.frames.total;
     const padrao = celular ? S.frames.mobile : S.frames.desktop;
     const src = (i) => padrao.replace("{n}", String(i + 1).padStart(4, "0"));
     const quadros = new Array(total);
@@ -21,7 +21,7 @@
       const img = new Image();
       img.decoding = "async";
       img.src = src(i);
-      img.onload = () => { if (Math.round(atual) === i || desenhado === -1) desenhar(i, true); };
+      img.onload = () => { if (Math.abs(atual - i) < 1 || desenhado === -1) desenhar(atual, true); };
       return (quadros[i] = img);
     };
 
@@ -49,21 +49,45 @@
       canvas.width = Math.round(canvas.clientWidth * dpr);
       canvas.height = Math.round(canvas.clientHeight * dpr);
       desenhado = -1;
-      desenhar(Math.round(atual), true);
+      desenhar(atual, true);
     };
 
-    function desenhar(i, forcar) {
-      const j = maisProximo(i);
-      if (j < 0 || (j === desenhado && !forcar)) return;
-      const img = quadros[j];
+    function desenharUm(img, alpha) {
       const cw = canvas.width, ch = canvas.height;
       const escala = Math.max(cw / img.naturalWidth, ch / img.naturalHeight); // "cover"
       const w = img.naturalWidth * escala, h = img.naturalHeight * escala;
-      ctx.drawImage(img, (cw - w) / 2, (ch - h) / 2, w, h);
-      desenhado = j;
+      ctx.globalAlpha = alpha;
+      const ancora = celular ? 0.38 : 0.5; // phones: keep the skyline in view
+      ctx.drawImage(img, (cw - w) / 2, (ch - h) * ancora, w, h);
+      ctx.globalAlpha = 1;
+    }
+    // Desenha o quadro fracionário: mistura o quadro inferior e o superior
+    // para que a rolagem pareça contínua e não "em degraus".
+    function desenhar(pos, forcar) {
+      const chave = Math.round(pos * 20) / 20;
+      if (chave === desenhado && !forcar) return;
+      const i0 = Math.floor(pos), i1 = Math.min(total - 1, i0 + 1), f = pos - i0;
+      if (pronto(i0) && pronto(i1)) {
+        desenharUm(quadros[i0], 1);
+        if (f > 0.01 && i1 !== i0) desenharUm(quadros[i1], f);
+        desenhado = chave;
+        return;
+      }
+      const j = maisProximo(Math.round(pos));
+      if (j < 0) return;
+      desenharUm(quadros[j], 1);
+      desenhado = chave;
     }
 
+    const fimVideo = document.querySelector("[data-fim-video]");
     const progresso = () => {
+      const curso = fimVideo
+        ? fimVideo.offsetTop + fimVideo.offsetHeight - innerHeight
+        : document.documentElement.scrollHeight - innerHeight;
+      return Math.min(1, Math.max(0, scrollY / (curso || 1)));
+    };
+    // Moments: opening section only
+    const progressoCine = () => {
       const r = cine.getBoundingClientRect();
       const curso = cine.offsetHeight - innerHeight;
       return Math.min(1, Math.max(0, -r.top / (curso || 1)));
@@ -79,10 +103,10 @@
 
     const quadro = () => {
       alvo = progresso() * (total - 1);
-      atual += (alvo - atual) * 0.18; // suaviza: sensação de filme, não de slide
-      if (Math.abs(alvo - atual) < 0.05) atual = alvo;
-      desenhar(Math.round(atual));
-      atualizarMomentos(atual / (total - 1));
+      atual += (alvo - atual) * 0.12; // suaviza: sensação de filme, não de slide
+      if (Math.abs(alvo - atual) < 0.01) atual = alvo;
+      desenhar(atual);
+      atualizarMomentos(progressoCine());
       requestAnimationFrame(quadro);
     };
 
@@ -148,7 +172,7 @@
         c.closest(".campo").classList.toggle("erro", !ok);
         if (!ok) valido = false;
       });
-      if (!valido) return avisar("Please check the highlighted fields.", "falha");
+      if (!valido) return avisar("Confira os campos destacados.", "falha");
 
       const dados = Object.fromEntries(new FormData(form));
       delete dados._honey;
@@ -163,7 +187,7 @@
       }
 
       botao.disabled = true;
-      avisar("Sending…");
+      avisar("Enviando…");
       try {
         const r = await fetch(url, {
           method: "POST",
@@ -173,10 +197,10 @@
         const j = await r.json().catch(() => ({}));
         if (!r.ok || j.success === false || j.success === "false") throw new Error(j.message || r.status);
         form.reset();
-        avisar("Got it. We'll be in touch within one business day.", "ok");
+        avisar("Recebemos seu contato. Em breve falamos com você.", "ok");
       } catch (e) {
         console.warn("Falha no envio do formulário:", e);
-        avisar("Could not send right now. Try us on WhatsApp.", "falha");
+        avisar("Não foi possível enviar agora. Chame a gente no WhatsApp.", "falha");
       } finally {
         botao.disabled = false;
       }

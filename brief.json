@@ -1,85 +1,58 @@
 {
   "nome": "withGrowth",
-  "slug": "withgrowth",
-  "negocio": "B2B growth consultancy: growth strategy, growth marketing, growth analytics and revenue operations. Fractional CGO model. Riyadh, Saudi Arabia, serving MENA scaleups and enterprises, expanding to EN/EU.",
-  "publico": "Founders, CEOs, CMOs and heads of growth at scaleups and established enterprises in Saudi Arabia, the Gulf and Europe",
+  "slug": "withgrowth-v2",
+  "negocio": "B2B growth consultancy in Riyadh: growth strategy, growth marketing, growth analytics, revenue operations. Not a marketing agency. Since 2021.",
+  "publico": "Founders, CEOs, CMOs and heads of growth at scaleups and established enterprises in Saudi Arabia and the Gulf",
   "identidade": {
     "cores": {
-      "fundo": "#F0F0EE",
-      "texto": "#0C0C12",
-      "acento": "#C9F31D"
+      "fundo": "#0C0C12",
+      "texto": "#F3F2EE",
+      "acento": "#CBF120"
     },
     "fontes": {
-      "titulo": "Anton",
-      "texto": "Instrument Sans",
-      "acento": "Instrument Serif"
+      "titulo": "Instrument Serif",
+      "texto": "Instrument Sans"
     },
     "clima": [
       "precise",
-      "Saudi",
+      "authentic Saudi",
       "confident"
     ],
-    "tema": "claro"
+    "tema": "escuro"
   },
-  "logo": "/Users/omara/Sites/withgrowth/logo-black.png + logo-white.png",
+  "logo": "logo-white.png (over video) + logo-black.png (after scroll, footer)",
   "copy": {
-    "frase_abertura": "We architect growth engines that convert",
-    "diferenciais": [
-      "not a marketing agency: marketing, product and data expertise in one team",
-      "fractional CGO model",
-      "growth architecture before growth hacks",
-      "every initiative is prioritised and measured"
-    ],
-    "textos_prontos": "Current site withgrowth.io/ln: four lines (growth strategy, growth marketing, growth analytics, revenue operations); process diagnose / build blueprint / start experimenting; philosophy clear data / practical strategy / measurable outcomes; partners in growth since 2021.",
-    "numeros_reais": [
-      "26+ companies",
-      "5+ years experience",
-      "126+ experiments completed",
-      "3.2x average ROI",
-      "8+ industries",
-      "52+ tools"
-    ],
-    "clientes_no_site_atual": [
+    "frase_abertura": "We architect growth engines that convert.",
+    "fonte": "withgrowth.io/ln positioning; real numbers only (26+ companies, 126+ experiments, 3.2x ROI, 8+ industries, 52+ tools, 5+ years); testimonial Naila Alkhalawi, COO",
+    "clientes_citados": [
       "Aanaab",
-      "TDF",
-      "Saudi National Bank",
-      "Amazon"
-    ],
-    "depoimentos_reais": [
-      {
-        "texto": "We fully endorse WithGrowth for their role in tripling our B2C revenue and enhancing our user experience. We highly recommend them for organizations seeking impactful growth strategies and user-centric enhancements.",
-        "autor": "Naila Alkhalawi, COO"
-      }
+      "Tourism Development Fund",
+      "Saudi National Bank"
     ]
   },
-  "referencias": [
-    "withgrowth.io/ln (current Webflow site)",
-    "Apple product pages scroll rhythm",
-    "Linear / Vercel dark editorial look"
-  ],
+  "midia": {
+    "video": "AI brand film 'Dunes of light' final = shotC (curve lifts, arcs, lands at a medium-distance Riyadh skyline) + shotD (slow push-in, towers grow, windows and lime edges brighten gently), 16s at 24fps = 384 frames, source/art2/opening-final.mp4. Fixed backdrop, plays until the proof section leaves the viewport, then holds.",
+    "fotos": "none: one video backdrop for the whole site (section photos moved to source/unused-img)",
+    "licenca": "Pexels free licence, no attribution required",
+    "nota": "2026-11-17: Omar wants Saudi tourist sights and landscapes, no people, no AI."
+  },
   "whatsapp": {
     "numero": "966115001518",
-    "mensagem": "Hi withGrowth, I'd like to chat with a growth consultant."
+    "mensagem": "Hi withGrowth, I'd like to talk to a growth consultant."
   },
   "email_contato": "hello@withgrowth.io",
   "secoes": [
     "opening",
-    "revenue review",
-    "services",
-    "products",
-    "programs",
-    "process",
+    "about",
+    "what we do",
+    "how we work",
     "proof",
     "contact",
     "footer"
   ],
-  "conceito": "Golden-hour aerial of Riyadh with the Kingdom Tower in the centre third; the camera pushes slowly toward the financial district. Light theme, lime accent.",
+  "conceito": "Low fast flight over blue-hour dunes; lime wind-lines converge into one rising curve and a glass skyline lights up on the horizon.",
   "modelos": {
     "video": "google/veo-3.1",
     "imagem": "google/gemini-nano-banana-2.1"
-  },
-  "midia": {
-    "video": "source/opening-light.mp4 (Riyadh sunset, 160 frames sliced)",
-    "imagens_atuais": "AI-generated Saudi scenes; Omar prefers authentic real Saudi photos (pending)"
   }
 }

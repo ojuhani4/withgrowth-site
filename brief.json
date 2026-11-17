@@ -31,11 +31,11 @@
     ]
   },
   "midia": {
-    "video": "AI brand film 'Dunes of light' final = shotC (curve lifts, arcs, lands at a medium-distance Riyadh skyline) + shotD (slow push-in, towers grow, windows and lime edges brighten gently), 16s at 24fps = 384 frames, source/art2/opening-final.mp4. Fixed backdrop, plays until the proof section leaves the viewport, then holds.",
+    "video": "AI brand film 'Dunes of light' final = shotC (lift, arc, landing) + shotD (push-in, city brightens) + shotE (night gives way to golden morning), 24s, 384 frames at 16fps, source/art2/opening-final.mp4. Fixed backdrop, plays until the contact section leaves the viewport, then holds on morning Riyadh.",
     "fotos": "none: one video backdrop for the whole site (section photos moved to source/unused-img)",
     "licenca": "Pexels free licence, no attribution required",
     "nota": "2026-11-17: Omar wants Saudi tourist sights and landscapes, no people, no AI.",
-    "video_celular": "Portrait 9:16 film for phones: source/art2m/phone-final.mp4 = shotC (lift, arc, landing) + shotD (push-in, city brightens), 16s, 384 frames at 24fps/720px. 'Morning' ending shots (desktop + portrait) pending OpenRouter credits."
+    "video_celular": "Portrait 9:16 film for phones with the same three beats, source/art2m/phone-final.mp4, 24s, 384 frames at 16fps/720px."
   },
   "whatsapp": {
     "numero": "966115001518",

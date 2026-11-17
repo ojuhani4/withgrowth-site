@@ -334,3 +334,8 @@ main, .rodape { position: relative; z-index: 1; }
   .whats { width: 52px; height: 52px; right: 14px; bottom: 14px; }
   .whats svg { width: 26px; height: 26px; }
 }
+
+/* Section grid column must never exceed the viewport (fixes cards laying out at 996px on phones) */
+.secao { grid-template-columns: minmax(0, 1fr); }
+.secao > * { min-width: 0; max-width: 100%; }
+.secao--larga > .cartoes, .secao--larga > .painel--cabecalho { width: 100%; max-width: min(100%, var(--largura)); }

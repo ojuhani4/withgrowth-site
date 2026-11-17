@@ -15,8 +15,8 @@ window.SITE = {
 
   frames: {
     total: 384,
-    mobileTotal: 192, // lighter set for phones (12 fps, 720px tall)
-    desktop: "assets/frames/desktop/f_{n}.webp?v=11",
-    mobile: "assets/frames/mobile/f_{n}.webp?v=11",
+    mobileTotal: 192, // portrait 9:16 film for phones, 24 fps, 720px wide
+    desktop: "assets/frames/desktop/f_{n}.webp?v=12",
+    mobile: "assets/frames/mobile/f_{n}.webp?v=12",
   },
 };

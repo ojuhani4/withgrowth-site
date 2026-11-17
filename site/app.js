@@ -57,7 +57,7 @@
       const escala = Math.max(cw / img.naturalWidth, ch / img.naturalHeight); // "cover"
       const w = img.naturalWidth * escala, h = img.naturalHeight * escala;
       ctx.globalAlpha = alpha;
-      const ancora = celular ? 0.38 : 0.5; // phones: keep the skyline in view
+      const ancora = 0.5; // phones now get a portrait film, so a centred crop is right
       ctx.drawImage(img, (cw - w) / 2, (ch - h) * ancora, w, h);
       ctx.globalAlpha = 1;
     }
@@ -79,7 +79,7 @@
       desenhado = chave;
     }
 
-    const fimVideo = document.querySelector("[data-fim-video]");
+    const fimVideo = (celular && document.querySelector("[data-fim-video-mobile]")) || document.querySelector("[data-fim-video]");
     const progresso = () => {
       const curso = fimVideo
         ? fimVideo.offsetTop + fimVideo.offsetHeight - innerHeight

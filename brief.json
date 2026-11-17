@@ -1,0 +1,85 @@
+{
+  "nome": "withGrowth",
+  "slug": "withgrowth",
+  "negocio": "B2B growth consultancy: growth strategy, growth marketing, growth analytics and revenue operations. Fractional CGO model. Riyadh, Saudi Arabia, serving MENA scaleups and enterprises, expanding to EN/EU.",
+  "publico": "Founders, CEOs, CMOs and heads of growth at scaleups and established enterprises in Saudi Arabia, the Gulf and Europe",
+  "identidade": {
+    "cores": {
+      "fundo": "#F0F0EE",
+      "texto": "#0C0C12",
+      "acento": "#C9F31D"
+    },
+    "fontes": {
+      "titulo": "Anton",
+      "texto": "Instrument Sans",
+      "acento": "Instrument Serif"
+    },
+    "clima": [
+      "precise",
+      "Saudi",
+      "confident"
+    ],
+    "tema": "claro"
+  },
+  "logo": "/Users/omara/Sites/withgrowth/logo-black.png + logo-white.png",
+  "copy": {
+    "frase_abertura": "We architect growth engines that convert",
+    "diferenciais": [
+      "not a marketing agency: marketing, product and data expertise in one team",
+      "fractional CGO model",
+      "growth architecture before growth hacks",
+      "every initiative is prioritised and measured"
+    ],
+    "textos_prontos": "Current site withgrowth.io/ln: four lines (growth strategy, growth marketing, growth analytics, revenue operations); process diagnose / build blueprint / start experimenting; philosophy clear data / practical strategy / measurable outcomes; partners in growth since 2021.",
+    "numeros_reais": [
+      "26+ companies",
+      "5+ years experience",
+      "126+ experiments completed",
+      "3.2x average ROI",
+      "8+ industries",
+      "52+ tools"
+    ],
+    "clientes_no_site_atual": [
+      "Aanaab",
+      "TDF",
+      "Saudi National Bank",
+      "Amazon"
+    ],
+    "depoimentos_reais": [
+      {
+        "texto": "We fully endorse WithGrowth for their role in tripling our B2C revenue and enhancing our user experience. We highly recommend them for organizations seeking impactful growth strategies and user-centric enhancements.",
+        "autor": "Naila Alkhalawi, COO"
+      }
+    ]
+  },
+  "referencias": [
+    "withgrowth.io/ln (current Webflow site)",
+    "Apple product pages scroll rhythm",
+    "Linear / Vercel dark editorial look"
+  ],
+  "whatsapp": {
+    "numero": "966115001518",
+    "mensagem": "Hi withGrowth, I'd like to chat with a growth consultant."
+  },
+  "email_contato": "hello@withgrowth.io",
+  "secoes": [
+    "opening",
+    "revenue review",
+    "services",
+    "products",
+    "programs",
+    "process",
+    "proof",
+    "contact",
+    "footer"
+  ],
+  "conceito": "Golden-hour aerial of Riyadh with the Kingdom Tower in the centre third; the camera pushes slowly toward the financial district. Light theme, lime accent.",
+  "modelos": {
+    "video": "google/veo-3.1",
+    "imagem": "google/gemini-nano-banana-2.1"
+  },
+  "midia": {
+    "video": "source/opening-light.mp4 (Riyadh sunset, 160 frames sliced)",
+    "imagens_atuais": "AI-generated Saudi scenes; Omar prefers authentic real Saudi photos (pending)"
+  }
+}

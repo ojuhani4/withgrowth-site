@@ -339,3 +339,13 @@ main, .rodape { position: relative; z-index: 1; }
 .secao { grid-template-columns: minmax(0, 1fr); }
 .secao > * { min-width: 0; max-width: 100%; }
 .secao--larga > .cartoes, .secao--larga > .painel--cabecalho { width: 100%; max-width: min(100%, var(--largura)); }
+@media (max-width: 760px) {
+  /* room under each section so the floating WhatsApp button does not sit on text */
+  .secao { padding-bottom: calc(14vh + 56px); }
+  .secao--contato { padding-bottom: 14vh; }
+}
+@media (max-width: 860px) {
+  /* centre caption: on phones it spans the gutters like the others, so no -50% shift */
+  .momento--centro { left: var(--gutter); right: var(--gutter); width: auto; transform: translateY(24px); }
+  .momento--centro.ativo { transform: none; }
+}

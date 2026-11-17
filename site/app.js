@@ -1,4 +1,7 @@
 (() => {
+  /* QA hook: ?qa=<scrollY> scrolls there after load (used for headless screenshots) */
+  const qaY = new URLSearchParams(location.search).get("qa");
+  if (qaY !== null) addEventListener("load", () => setTimeout(() => window.scrollTo(0, parseInt(qaY, 10) || 0), 300));
   const S = window.SITE || {};
   const reduzir = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const celular = matchMedia("(max-width: 760px)").matches;

@@ -83,11 +83,35 @@
     }
 
     const fimVideo = (celular && document.querySelector("[data-fim-video-mobile]")) || document.querySelector("[data-fim-video]");
+    const cursoTotal = () => fimVideo
+      ? fimVideo.offsetTop + fimVideo.offsetHeight - innerHeight
+      : document.documentElement.scrollHeight - innerHeight;
+    // Script (optional): pins film positions to sections, so each act of the film
+    // lands on the section it belongs to whatever the content height.
+    // config: roteiro / mobileRoteiro = [{ em: "#about", filme: 0.333 }, ...]
+    const roteiro = (celular && S.frames.mobileRoteiro) || S.frames.roteiro || null;
+    let pontos = null;
+    const montarPontos = () => {
+      if (!roteiro) return;
+      const lista = [[0, 0]];
+      for (const r of roteiro) {
+        const el = document.querySelector(r.em);
+        if (el) lista.push([el.offsetTop, Math.min(1, Math.max(0, r.filme))]);
+      }
+      lista.push([cursoTotal(), 1]);
+      lista.sort((a, b) => a[0] - b[0]);
+      pontos = lista;
+    };
     const progresso = () => {
-      const curso = fimVideo
-        ? fimVideo.offsetTop + fimVideo.offsetHeight - innerHeight
-        : document.documentElement.scrollHeight - innerHeight;
-      return Math.min(1, Math.max(0, scrollY / (curso || 1)));
+      const y = scrollY;
+      if (pontos) {
+        for (let k = 1; k < pontos.length; k++) {
+          const [y0, f0] = pontos[k - 1], [y1, f1] = pontos[k];
+          if (y <= y1) return y1 > y0 ? Math.max(f0, Math.min(f1, f0 + (f1 - f0) * (y - y0) / (y1 - y0))) : f1;
+        }
+        return 1;
+      }
+      return Math.min(1, Math.max(0, y / (cursoTotal() || 1)));
     };
     // Moments: opening section only
     const progressoCine = () => {
@@ -113,7 +137,9 @@
       requestAnimationFrame(quadro);
     };
 
-    addEventListener("resize", ajustar);
+    addEventListener("resize", () => { montarPontos(); ajustar(); });
+    addEventListener("load", montarPontos); // offsets settle once fonts and images are in
+    montarPontos();
     ajustar();
     if (reduzir) atualizarMomentos(0);
     else requestAnimationFrame(quadro);
@@ -175,11 +201,11 @@
         c.closest(".campo").classList.toggle("erro", !ok);
         if (!ok) valido = false;
       });
-      if (!valido) return avisar("Confira os campos destacados.", "falha");
+      if (!valido) return avisar("Please check the highlighted fields.", "falha");
 
       const dados = Object.fromEntries(new FormData(form));
       delete dados._honey;
-      const assunto = S.contato.assunto || `Novo contato pelo site ${S.nome || ""}`;
+      const assunto = S.contato.assunto || `New contact from the ${S.nome || ""} website`;
       let url, corpo;
       if (S.contato.web3formsChave) {
         url = "https://api.web3forms.com/submit";
@@ -190,7 +216,7 @@
       }
 
       botao.disabled = true;
-      avisar("Enviando…");
+      avisar("Sending…");
       try {
         const r = await fetch(url, {
           method: "POST",
@@ -200,10 +226,10 @@
         const j = await r.json().catch(() => ({}));
         if (!r.ok || j.success === false || j.success === "false") throw new Error(j.message || r.status);
         form.reset();
-        avisar("Recebemos seu contato. Em breve falamos com você.", "ok");
+        avisar("Thanks, we have your message. A consultant will be in touch shortly.", "ok");
       } catch (e) {
         console.warn("Falha no envio do formulário:", e);
-        avisar("Não foi possível enviar agora. Chame a gente no WhatsApp.", "falha");
+        avisar("We could not send that right now. Reach us on WhatsApp instead.", "falha");
       } finally {
         botao.disabled = false;
       }

@@ -17,7 +17,7 @@ window.SITE = {
     total: 384,
     mobileTotal: 384, // portrait 9:16 film for phones, 16 fps, 720px wide
     desktop: "assets/frames/desktop/f_{n}.webp?v=14",
-    mobile: "assets/frames/mobile/f_{n}.webp?v=15",
+    mobile: "assets/frames/mobile/f_{n}.webp?v=16",
     // Phone film script: act 1 (light crosses the dunes and lands) = hero,
     // act 2 (the city switches on) = About + Services,
     // act 3 (night turns to morning) = Process to Contact.

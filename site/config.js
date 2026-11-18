@@ -16,11 +16,15 @@ window.SITE = {
   frames: {
     total: 384,
     mobileTotal: 384, // portrait 9:16 film for phones, 16 fps, 720px wide
-    desktop: "assets/frames/desktop/f_{n}.webp?v=14",
+    desktop: "assets/frames/desktop/f_{n}.webp?v=15",
     mobile: "assets/frames/mobile/f_{n}.webp?v=16",
-    // Phone film script: act 1 (light crosses the dunes and lands) = hero,
-    // act 2 (the city switches on) = About + Services,
+    // Film script, both formats: act 1 (threads merge and the light reaches the city) = hero,
+    // act 2 (the city brightens) = About + Services,
     // act 3 (night turns to morning) = Process to Contact.
+    roteiro: [
+      { em: "#about", filme: 1 / 3 },
+      { em: "#process", filme: 2 / 3 },
+    ],
     mobileRoteiro: [
       { em: "#about", filme: 1 / 3 },
       { em: "#process", filme: 2 / 3 },

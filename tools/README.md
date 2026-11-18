@@ -10,3 +10,6 @@ and saves a JPEG for each. Plain `--window-size` and the GUI window both clamp t
 
 ## tools/slice-phone.sh
 Rebuilds `site/assets/frames/mobile/` from `source/art2m/phone-final.mp4` (16 fps, 720px, WebP q46). Bump the `?v=` on the mobile frame URL in `site/config.js` afterwards.
+
+## tools/slice-desktop.sh
+Same for the desktop set from `source/art2/opening-final.mp4` (16 fps, 1920px, WebP q66). Bump the `?v=` on the desktop frame URL afterwards.
